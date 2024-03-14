@@ -281,3 +281,98 @@ Ernest(5,10)
 //storing data in arrays(which allows the rearrangement of sequence of items) helps buid sequence of variable in a collection
 var names =["Uche", "Ernest", "Nelson", "Alice"]
 console.log(names[3])
+//A function That makes an array as an input and displays all the items of this array
+function countryArray(country){
+    for (var i = 0; i<5; i++)
+    console.log(i,country[i])
+}
+country = ["Nigeria", "Niger", "Angola", "Mali", "Singapore", "Egypt"]; //Array items are indexed from Zero  
+countryArray(country);
+// to get the length of an array which counts from 1
+const length = country.length;
+console.log("The length of the array is "+ length);
+//using the name of the array.length to make code dynamic based on the number of elements contained in the array
+function countryArray(country){
+    for (var i = 0; i<country.length; i++)
+    console.log(i+1,country[i]) //to count the index from instead of zero(use i+1)
+}
+country = ["Nigeria", "Niger", "Angola", "Mali", "Singapore","Egypt"]; //Array items are indexed from Zero  
+countryArray(country);
+//Adding more conditions to the elements of the array and using the Index
+function countryArray(country){
+    for (var i = 0; i<country.length; i++){
+        if (country[i] == "Nigeria"){
+            console.log(i, "Green")
+        } else if (country[i] == "Niger") {
+            console.log(i, "black")
+        } else console.log(i, [country[i]])
+    }
+}
+country = ["Nigeria", "Niger", "Angola", "Mali", "Singapore","Egypt"]; //Array items are indexed from Zero  
+countryArray(country);
+//Adding more conditions to the elements of the array and using the Index
+function countryArray(country){
+    for (var i = 0; i<country.length; i++){
+        if (country[i] == "Nigeria"){
+            console.log(i*100, "Green") //specifies the color for the country based on their position(index) in the array.
+        } else if (country[i] == "Niger") {
+            console.log(i*100, "black")
+        } else console.log(i*100, country[i])
+    }
+}
+country = ["Nigeria", "Niger", "Angola", "Mali", "Singapore","Egypt"]; //Array items are indexed from Zero  
+countryArray(country); 
+//mine, coding a funciton that will be able to take a word and locate the position of a choosen letter in that given word
+function letterFinder(word, match) {
+    for (var i=0;  i<word.length; i++) {
+ if(word[i] == match) {
+    console.log('found the', match, 'at', i)
+}else{ console.log('---no match found at',i)
+    }
+  }   
+}
+
+
+letterFinder("text", "t")
+//thiers
+function letterFinder(word, match) {
+    for(var i = 0; i < word.length; i++) {
+        if(word[i] == match) {
+            //check if the current characater, word[i], is equal to the match
+            console.log('Found the', match, 'at', i)
+        } else {
+            console.log('---No match found at', i)
+        }
+    }
+}
+
+letterFinder("test", "t")
+//use of  objects in Javascript
+//using java script to build a game(cookie selling based) Nature of game is turn based
+//first set character traits
+    // var storeManagerMovement = 4
+    // var storeMangerSocialSkills = 50
+    // var storeManagerStreetSmarts = 50
+    // var storeMangerHealth = 30
+//Uing objects to show that the variables are related and all describe the same character
+ var storeManager ={} //creating or declaring an empty object literal (storeManager)
+ storeManager.rangeTilesPerTurn = 4 //variable name(Eg rangeTilesPerTurn) beocmes a property key
+ storeManager.SocialSkills = 50  //and variable value(eg 4) becomes the property value of the object
+ storeManager.streetSmart = 50
+ storeManager.health = 30
+ storeManager.nextAchievemnet = "open a new store"
+ console.log (storeManager)
+ console.log(storeManager.nextAchievemnet)//outputs the traits of the storeManager as a property of the Object
+//building an object by listing the key value pairs inside the object literal
+//it specifies them as comma delimited properties Example below
+var assistantManager = {
+  movement: 4,
+  socialDexterity: 40,
+  healthStatus:50,
+  streetAbility: 60,
+  nextAchievemnet: "get Promoted"
+}
+console.log (assistantManager) //outputs the full object- traits of the assistantManager as a property of the object
+console.log(assistantManager.healthStatus)//outputs an individual property
+// object literals and bracket notation
+
