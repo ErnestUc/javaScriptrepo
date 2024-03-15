@@ -360,7 +360,7 @@ letterFinder("test", "t")
  storeManager.SocialSkills = 50  //and variable value(eg 4) becomes the property value of the object
  storeManager.streetSmart = 50
  storeManager.health = 30
- storeManager.nextAchievemnet = "open a new store"
+ storeManager.nextAchievemnet = "open a new store",
  console.log (storeManager)
  console.log(storeManager.nextAchievemnet)//outputs the traits of the storeManager as a property of the Object
 //building an object by listing the key value pairs inside the object literal
@@ -374,5 +374,81 @@ var assistantManager = {
 }
 console.log (assistantManager) //outputs the full object- traits of the assistantManager as a property of the object
 console.log(assistantManager.healthStatus)//outputs an individual property
-// object literals and bracket notation
+// object literals and bracket notation, An Alternative syntax to dot notation
+var storeManager ={}
+storeManager["rangeTilesPerTurn"] = 40
+storeManager["SocialSkills"] = 30
+storeManager["streetSmart"] = 50
+storeManager["nextAchievemnet"] = "Open two New Stores"
+storeManager.healthStatus = 75 //mixing object literals with dot notation
+storeManager["Level of Empathy and care"] = 67 //use of object literals permits the addition of spaces between the property names
+console.log(storeManager)
+//use of bracket notation to evaluate expressionse eg below
+var Coronation =["CTL", "CAM", "COSEC", "Insurance"]  //declaration of an arrray
+var staffStrength ={
+    CTL: 11,
+    CAM: 20,
+    COSEC: 15,
+    Insurance : "100 staff"
+}
+console.log(staffStrength)  //ouptuts the property keys with the values
+for (i=0; i<Coronation.length; i++) {
+    console.log(staffStrength[Coronation[i]]) //ouputs the values of the Property keys in the array
+} //allows the looping through each of the values stored in the staffStrength object based on each of it's properties' key
 
+//Arrays are objects with their own built in properties and methods//
+//Extend/add to an array-push()method and trim/remove the last memeber of an array-pop()method
+var animals = []  //delcare and empty array
+animals.push("jaguar") //adds jaguar to the empty array
+animals.push("Tiger")
+animals.push("Leopard")
+//console.log (animals) //outputs all the animals added to the empty array as elemnts of the array
+animals.pop("Tiger")  //removes the indicated element/object of the array
+//console.log(animals)
+
+//building a function that takes it's argument and pushes them to an array example below
+function numberCount(one, two, three) {
+    var count =[]
+    count.push(one)
+    count.push(two)
+    count.push(three)
+    //console.log(count)
+     return count
+}
+//numberCount('jaguar', 'Tiger', 'Leopard')  //outputs the animals objects as the arguments pushed into the array
+var animalArray = numberCount('jaguar', 'Tiger', 'Leopard')
+console.log(animalArray)
+//Math object cheat sheet(a popular javascript built in object)
+var x = Math.max(3,4,5)
+ console.log(x)
+ var Y = Math.min(2.5, 3.8, 3.9, 2.4)
+ //Math.round(Y)
+ console.log(Math.round(Y))
+ //Math Random Method
+ var number = Math.random()
+ console.log(number)  //genrates and ouputs any random decimal number
+ console.log(number*10) //multiplies the the random decimal by 10
+ //to generate and round up to an integer a random number between 0 and 10
+ var randomNumber = Math.random() * 10 //delcares a random number muotiplied by 10
+ var roundedNumber = Math.ceil(randomNumber) //passes the random and rounds it up to an integer
+ console.log(roundedNumber)
+
+ //Array characteristics of Strings...iterable(any data type that can be iterated over using a for or loop) eg arrays and strings
+var fruits = ["carrot", "Apple", "Banana"]   //iterating over and array
+console.log (fruits.length)
+console.log(fruits[0])
+console.log(fruits[1])
+
+for (var i=0; i<fruits.length; i++){
+    console.log(fruits[i])
+}
+//iterating over a stirng
+var fruits = "Vegetable"   //Iterating over a String
+console.log (fruits.length)
+console.log(fruits[0])
+console.log(fruits[1])
+console.log(fruits[2])
+
+for (var i=0; i<fruits.length; i++){
+    console.log(fruits[i])   //outputs the loop
+}
