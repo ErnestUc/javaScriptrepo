@@ -447,8 +447,65 @@ var fruits = "Vegetable"   //Iterating over a String
 console.log (fruits.length)
 console.log(fruits[0])
 console.log(fruits[1])
-console.log(fruits[2])
+console.log(fruits[2])   //note, push and pop methods can only be used in an array and not in a string
 
 for (var i=0; i<fruits.length; i++){
     console.log(fruits[i])   //outputs the loop
 }
+var Ernest = "is becoming good in Coding"
+console.log(Ernest)
+//String cheat sheet
+var Greeting = "Good Morning"
+var Name = "Lisa"
+console.log(Greeting.length) //Length of the string(length property)
+console.log(Greeting.concat( Name)) //Concatenation
+console.log(Greeting + Name) //concatenation
+console.log(Greeting,Name) //concatenates with an added space
+console.log(Greeting.charAt(1))  //reads the individual character based on the index postion
+console.log(Name.charAt(2)) //charAt is similar to how individual elements are read in an array
+console.log("Lisa".indexOf("s")) //outputs the Location of the first position that matches the character
+console.log("Good Morning".lastIndexOf("o"))//returns the location of the lasct postion that matches the character, else it works as IndexOf
+console.log(Greeting.split(" ")) //chops up the string into an array of subtrings
+//Creating arrays and objects
+var clothes =[]
+clothes.push("Native", "Shirt", "Short Sleeve", "Polo","v-neck")
+console.log(clothes)
+clothes.pop()//or clothes.pop(clothes[4])// or clothes.pop("v-neck") ie removes the last array parameter/element
+console.log(clothes)
+clothes.push("Ankara") //adds a new parameter in the clothes array
+console.log(clothes)
+console.log(clothes[2])//returns the third item in the clothers array
+var favCar = {}  //delaring and empty object Literal and storing it in favCar
+favCar.color = "Ash" //assigning a color property to the favCar object with a value Ash
+//console.log(favCar)
+favCar.IsNew = true
+console.log(favCar)
+//object Method
+var car = {}
+ car.color = "White"; //property of the object
+ car.mileage = "24238"; //Property of the object
+ //console.log(car)
+car.turnKey = function() { //adding a method to the car object which is called as car.turnKey, the function is a property of the object car and hence referred to as a method
+    console.log("engine is running")
+};
+car.turnLightsOn = function() {  //property of the object, in this case a method
+    console.log("The lights is turned on")
+};
+car.turnKey()
+car.turnLightsOn()
+console.log(car)
+//typeOf operator- used to identify the data type of an element in javascript
+var score = typeof(23.99)
+console.log(score)
+var country = typeof(function(){console.log("Very bad country")})
+console.log(country)
+
+//carrying out addition using function
+var calculate = function add(a, b) {
+    return a + b;
+}
+var number = calculate(30,20)
+console.log("Result is:", number)
+
+
+
