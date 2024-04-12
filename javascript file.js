@@ -506,6 +506,141 @@ var calculate = function add(a, b) {
 }
 var number = calculate(30,20)
 console.log("Result is:", number)
+//Error handling, when a bug happens, the program keeps running, but behaves in a way that is not intended, but when and an error happens, the program stops running
+function multiply(a,b) {  //note that addition of a string and a number in javascript results to a concatenation
+    console.log(a+b)
+}
+multiply("50",5)
+console.log("No error yet")
+//Types of errors in javascript includes syntax error(an error with syntax in the code, eg missing"" in the declaration of a string), type error and Refrence error(when a variable is not declared)
+//Try and catch blocks.built-in statemments that helps your code continue to run even if an error occurs
+//Also use keywords like throw and catch used to catch the error
+//Throw, try and catch for error handling..test a code of block for errors using the try catch statement, a piece of code that throws an error is wrapped inside the Try block and the error is caught inside the Catch block.
+console.log(a + b)
+console.log("This line will never be reached if the error(Undelared parameters) is not caught")
+//using a try block to catch the error 
+try{
+    console.log(a + b) 
+  }catch(error){
+    console.log(error)
+   console.log("There was an error")
+   console.log("The error was not saved in the error list")
+    }
+ console.log("The program continued running despite the error")
+ //manually throwing and error.
+ try{
+    throw new ReferenceError()
+ } catch(error){
+    console.log(error)
+    console.log("There was a Reference error")
+ }
+ console.log("The Program continued running")
+ //range error
+ var num = (10).toString(100); //trying to convert base 10 number to a number that does not exist in javascript
+ console.log(num)
+ //Undefined data type, null data type and empty strings are three types of Empty values
+ //Null data type-intentional absence of any object value
+ var female = 'Maureenu'
+ female = (female.match(/c/)) //The letter C does not exist in the string, so Null appears to indicate absence of an object
+ //console.log((female.match(/u/)))
+ console.log(female)
+var school
+console.log(school) //undefined value. Any use of the variable before the delcalration returns undefined
+school = "Theoma"
+ console.log(school)
+ //Accessing an undefined object
+ var game ={
+    score: 1000
+ }
+console.log(game.Score)
+var nothing = " "
+console.log(nothing)//returns nothing or an empty string
+//Error handling task
+function addTwoNum(a,b) {
+       try{
+        console.log(a+b)
+      } catch(error){
+       console.log(error)
+       
+}
+}
+addTwoNum(5, "5")
+//manually inputing an error to be catch to handle the fact that 5+5 is 10 and not 55
+function addTwoNum(a,b) {
+    try{
+     if (typeof(a) !== "number") //checks if first argument is a number
+     throw new ReferenceError("The first argument is not a number")
+     else if (typeof(b) !== "Ernest") //checks if the second arument is a number
+     throw new ReferenceError("The second argument is not a number")
+     else
+     console.log(a+b)
+    } catch(err){   //note that err or error is the key word for catching error
+    console.log("Error!",err)   
+} 
+}
+addTwoNum(5, "5")
+console.log("the code still works")
+//Exercise, Defensive Programming-This is when we assume that the arguments a function will recieve(faulty inputs) are of wrong type, or value ie expecting something to go wrong in the code and finding a way to curb the error before it happens
 
+    function letterFinder(word, match) {
+        var setCondition = typeof(word) == 'string' && word.length >= 2
+        var setCondition2 = typeof(match) == 'string' && match.length == 1
 
+        if(setCondition == true && setCondition2 == true){
+        for(var i = 0; i < word.length; i++){
+            if(word[i] == match) {
+                //if the current character at position i in the word is equal to the match
+                console.log('Found the', match, 'at', i)
+            } else {
+                console.log('---No match found at', i)
+            }
+        }
+    }
+        else{
+            console.log("Please pass correct arguments to the function.")
+        }
+    }
+    letterFinder([],[])         // incorrect requirement input(failing test)
+    letterFinder("Ernest", "0a")   //incorrect requirement input(failing test)
+    letterFinder("Ernest", "0")     //correct input but without a match(Passing test)
+    letterFinder("Ernest", "s")     //correct input with a match(passing test)
+ //OR
+function letterFinder(word, match) {
+    var condition1 = typeof(word) == 'string' && word.length >= 2; //if the word is a string and the length is greater than or equal to 2
+    var condition2 = typeof(match) == 'string' && match.length == 1; //if the match is a string and the length is equal to 1
+    if(condition1 && condition2) { //if both condition matches
+        for(var i = 0; i < word.length; i++) {
+            if(word[i] == match) {
+                //check if the character at this i position in the word is equal to the match
+                console.log('Found the', match, 'at', i)
+            } else {
+                console.log('---No match found at', i)
+            }
+        }
+    } else {
+        //if the requirements don't match
+        console.log("Please pass correct arguments to the function")
+    }
+}
+letterFinder(6, "0")
+letterFinder([],[])
+letterFinder("cat","c")
 
+//Introduction to functional programming, use of Paradigms(FP-functional programming and OOP-Object oriented Progamming.. combines both data and functions into object) as the different approaches to writing code
+//functional programming style
+var bags =  5000
+var VAT = 1.1
+function amount(price, Tax){
+    return(price * Tax)
+}
+var total = amount(bags, VAT)
+console.log(total)//Hence the variable *total* with is's value can now be used anywhere else in the program
+//To calcualte a currency conversion ( using functional Programming style)
+var firstCurrency = 1242.46
+var secondCurrency = 0
+var exchangeRate = 1
+function convertCurrency(amount, rate){
+    return(amount * rate)
+}
+var secondCurrency = convertCurrency(firstCurrency, exchangeRate)
+console.log(secondCurrency)
