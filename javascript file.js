@@ -642,5 +642,112 @@ var exchangeRate = 1
 function convertCurrency(amount, rate){
     return(amount * rate)
 }
-var secondCurrency = convertCurrency(firstCurrency, exchangeRate)
-console.log(secondCurrency)
+var secondCurrency = convertCurrency(firstCurrency, exchangeRate)  //update the value of secondCurrency by assigning the function call to as it's new value.
+console.log(secondCurrency)  //N/B functional programming is used to solve a problem by seperating data from it's function
+//Return values from functions, many functions by default returns the value of undefined
+console.log("Hello")  //returns the string Hello 
+console.log()//returns an empty value
+function consoleLog(val) {
+    console.log(val)
+    return val
+}
+consoleLog() //returns an undefined value.
+consoleLog("Hello") //returns the value Hello when the custom consolelog() is run
+//returning values from one function inside another function(Example)
+function doubleIt(fig){
+    return fig*2
+}
+//code a function that builds an object with a specific value
+function objectComp(knee){
+      return{
+        prop: knee
+      }
+}   //call the objectComp function with any value
+const resulto = objectComp(30)  //returns {prop:30}
+console.log(resulto)
+const double = doubleIt(20).toString() //call the first fucntion and converts it value to a string ie returns "20"
+console.log(double)
+const comp = objectComp(doubleIt(90)) //combining the function code which returns {prop: 180}
+console.log(comp)
+//using the retun keywords allows for multiple function calls, return data and manipulate values. This allows the return of custom values
+//Function calling and recursion - writing recusrsive functions properly and avoiding getting stuck in an infinite loop
+function recursion() {
+    console.log("Uc1")
+    console.log("Uc2")
+    console.log("Uc3")
+    console.log("Uc4")
+    recursion() //adding name of the function itself, repeats the function in an infinite loop when the code is run. To prevent this, see edited code below
+}
+recursion()//returns sequentially Uc1 Uc2 & Uc3
+//preventing code a recursion function from running to ann infinite loop.
+let counter = 4
+function recursion() {
+    console.log(counter)
+    counter = counter -1
+    if(counter === 0)//the if condition prevents the function from running indefintely
+   return
+    recursion() //name of the function itself, repeats the function in an infinite loop when the code is run.
+} //note that recursion is when a function calls itself. it is an alternative way to run a repitive code without the use of loops
+recursion()
+//Scope- Code accessibility(it determines which part of the code are accessible and which part are inaccessible)
+var cookBeans = 20//(global scope)
+function score(){   // (Local scope)
+    console.log(cookBeans)
+}
+score()
+//scope types- global and local.code that exist outside a function is a global scope while code that exist inside a function is called Local scope
+//funcitonal programming vs Object oriented programming as the two prgoramming paradigms(or styles of coding)
+//functional programming Examples
+function getsum(a,b){
+    return (a+b)
+}
+var int1 = 1200
+var int2 = 1000
+var sum = getsum(int1,int2)
+console.log(sum)
+//Note that in function programming, data and functionality are kept seperate, data is passed into functions only when something is to be computed. eg
+function calculateDistance(speed, time){
+    return speed*time
+}
+var speed = 12
+var time = 5
+var distance = calculateDistance(speed, time)
+console.log(distance)//new values are returned and are used somewhere else in the code
+//object oriented programming (OOP)- here data and functionality are grouped as properties and methods inside objects check the example below
+var mostfeminist = {
+    rational: false,           //property inside an object
+    equality: function(){     //method inside an object
+        this.rational = true
+    }
+}
+console.log(mostfeminist.rational)  //rational property is false
+mostfeminist.equality()          //call the equality method on the mostFeminist object
+console.log(mostfeminist.rational)  //rational property changes to true
+//important concepts in function programming
+//*first class functions, higher order functions and Pure functions and side effects
+//First class functions, functions in javascript are considered as first class citizens, this means that they are values we can
+// * pass to other functions, save in a variable or return from other functions
+//Example where a function invocation is passed to another function
+function sumTwoNum(a, b){
+    console.log(a+b)
+}
+function randomNum(){
+    return Math.floor((Math.random() * 10) +1)
+}
+function specificNum(){
+    return 40
+}
+var useRandom = true
+var getNumber
+if (useRandom){
+    getNumber = randomNum
+}else{
+    getNumber = specificNum
+}
+sumTwoNum(getNumber(), getNumber())
+
+
+
+  
+
+
