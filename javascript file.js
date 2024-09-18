@@ -732,22 +732,361 @@ function sumTwoNum(a, b){
     console.log(a+b)
 }
 function randomNum(){
-    return Math.floor((Math.random() * 10) +1)
+    return Math.floor((Math.random() * 10) +1)  //function for Random Number
 }
 function specificNum(){
-    return 40
+    return 40   //Function for specific number
+}
+var useRandom = false
+var getNumber   //declares the variable getNumber unassigned, getNumber variable is assigned to either of the declared functions based on if useRandom is True or False
+if (useRandom){
+    getNumber = randomNum  //stores the function randomNum in the variable getNumber if useRandom is used
+}else{
+    getNumber = specificNum  //stores the function specificNum in the variable getNumber if useRandom is not used
+}
+sumTwoNum(getNumber(), getNumber())//output based on the value of useRandom varialble
+//Higer Order Functions- 1) Accepts other functions as argument and 2) returns functions when invoked
+//Example of a Higher Order Function
+function sumTwoNum(getNumber1, getNumber2){ //function accepting other functions as argumnent
+    console.log(getNumber1() + getNumber2())  
+}
+
+function randomNum(){
+    return Math.floor((Math.random() * 10) +1)  //function for Random Number
+}
+function specificNum(){
+    return 40   //Function for specific number
 }
 var useRandom = true
-var getNumber
+var getNumber   //declares the variable getNumber unassigned, getNumber variable is assigned to either of the declared functions based on if useRandom is True or False
 if (useRandom){
-    getNumber = randomNum
+    getNumber = randomNum  //stores the function randomNum in the variable getNumber if useRandom is used
 }else{
-    getNumber = specificNum
+    getNumber = specificNum  //stores the function specificNum in the variable getNumber if useRandom is not used
 }
-sumTwoNum(getNumber(), getNumber())
+sumTwoNum(specificNum, specificNum)  //returns the value of the sum of the specificNum function
 
+sumTwoNum(specificNum, randomNum)  //returns the specifiNum plus some randomNum added to it.
+//pure funcitons and side effect- this returns the exact same result as long as it is given the same value example
+function sumNum(a, b){
+    console.log(a + b)
+}
+sumNum(7, 10)
+//A pure function does not have side effect(ie an instance where a function makes a change outside itself)
+//Writing codes in hands-on activities called Labs(Visual studio code Lab)
 
+//Yet to do Programming Assignement-Building a Functional Program
 
-  
+//Scoping with var, let and const.
+//Scope relates to code accessibility-it determines which part of the code is accessible by different parts of the program
+//In ES5 Version of javascript, functions build local scope(Variable are codes accessible only within the function where it is declared), recall all codes outside a fucntion are refered to as Global scope
+//however, the ES6 Version of Javascript introduced the Block scope-This states that a variable delcared in a block of code is only accessible inside that block. All the other code outside that code block cannot access it.
+//Block scope is built when variables are declared using Let or Const.
+//Example
+let name = 'Ernest' //Global scope
 
+if (name == "Ernest") {   //block scope contained within curly braces
+    let name = 'Paul' 
+} //Two seperate variables with the same name
+console.log(name)
+//Characteristics of Using the Let or Const key word in variable Declaration
+//* you cannot use the variables before it is declared, The variables can't be redeclared and The declared variable is scoped to the block
+//Let is used if the value might change in the future and Const is used if the value will never change
+//Comparing var, let and const keywords.
+//A variable declared with the Var keyword can be accessed before initialization as long as the variable is eventually iniitialized somewhere in the code
+//Example
 
+console.log(ErnestUc)
+var ErnestUc  //output is undefined with No error(this means that the Javascript engine continues to run and does not stop)
+//Using the var keyword, we can declare and redeclare the same variables without errors
+//Example
+var Ernest = "fair"
+var Ernest = "dark"
+var Ernest = "chocolate"
+console.log(Ernest)
+//variable decared with the let keywords cannot be accessed before declaring it.
+//Example
+console.log(Ernest)
+let Ernest  //output- cannot access 'Ernest' before initialization
+
+let Ernest
+console.log(Ernest)// outputs Undefined without error
+let Ernest = processEngineer
+let Ernest = dataAnalyst
+console.log(Ernest)//ouputs error-Syntax error, Identifier Ernest has already been declared
+//however, while a let variable cannot be redeclared, it can be re-assigned
+//Example
+let paul //= "courages"  //Declaring the variable paul with the let Keyword(the variable paul can also be undefined ie not assigned to any value)
+paul = "Brave"     // reassigning the variable paul to another string value
+console.log(paul)   //outputs the last reassignment of the variable paul
+//A variable declared with a const keyword must be initialized and it's used when the variable is not expected to change
+//Example and also note that variables declared with const keyword must be assigned on declaration
+const ErnestUchenna = "fair"
+ErnestUchenna = "dark"  //variable declared with the const keyword cannot be reassigned
+console.log(ErnestUchenna)  //outputs error - TypeError: Assignment to constant variable
+
+//Practice examples
+function meal(animal) {
+    animal.food = animal.food + 10;
+}
+
+var dog = {
+    food: 10
+};
+meal(dog);//first call- animal.food ie dog.food + 10 = 20 ie 10+10
+meal(dog);//second call-animal.food ie dog.food +10 = 30 ie 20+10
+
+console.log(dog.food);//outputs 30
+//compare example in OOp
+function totalPrice(shoes, stateTax){
+    return shoes * stateTax
+}
+var shoe = 100
+var Tax = 1.2
+var totalAmount = totalPrice(shoe, Tax)
+console.log(totalAmount)
+//Introduction to OOP(Object Oriented Programming)
+//OOP revolves around the idea of organizing our programs using objects to group related data and functionality
+//Expample-write a code that calculates the total cost of buying a pair of shoes
+//Create and object and store all data related to that object including variables, functions and output statements
+//Example below 
+var purchase1 ={   //the object
+    shoes: 100,     //object keys/variables with their values
+    stateTax: 1.2,
+    totalPrice: function(){  //functions inside objects are know as methods
+        var calculation = purchase1.shoes * purchase1.stateTax
+        console.log('Total Price:', calculation)
+        //console.log(this.totalPrice, calculation)
+    }
+}
+purchase1.totalPrice() //Outpuuts the total price of ie 100*1.2 = 120
+//console.log(purchase1)
+//building another object example
+var purchase2 = {
+    shoes: 60,
+    stateTax: 1.2,
+    totalPrice: function(){
+        var calculation = purchase2.shoes * purchase2.stateTax
+        console.log("Total Price:", calculation) 
+    }
+}
+purchase2.totalPrice()//accessing totalPrice method under purchase2 object
+//improving the objects so that both methods are identical by using the this. keyword
+//Example
+var purchase1 = {
+    shoes: 100,
+    stateTax: 1.2,
+    totalPrice: function() {
+        var calculation = this.shoes * this.stateTax  //making the code identical instead of having the object name, Also use of the This keyword makes it easy to not care about the objects name. This approach allows for the reuse of existing code, instead of writing a custome method for every object
+        console.log("Total Price:", calculation)
+    }
+}
+purchase1.totalPrice()
+//However, the same method is being repeated for each new object that is built, which is wasteful and programs needs to be efficient. Hence Templates are made for Objects
+//one of the most elegant ways to efficiently build new objects is by using classes
+//where there is a need to build many many objects that have a certain specific set of properties and methods
+//Example- To build hundreds of car objects for a car racing game- Use class- which is built using the class key word followed by the name of the class starting with a capital letter and a pair of curly braces.
+//inside the curly braces, there is a constructor function which acceptes as many parameters as needed
+//The role of the constructor function is to assign the passed in parameters to the future objects properties. The constructor function is used when instantiating new objects, instances of a given class. After the constructor is defined, you can add as many method as you want. Note that the function keyword is not used in classses, just the name of the method is needed
+//Example
+class Car{   //class named Car
+    constructor(color, speed, model){  // Passed in Parameters whcih are assigned to object properties
+    this.color = color;
+    this.speed = speed;
+    this.model = model;
+    }
+    turbocharger(){  //method1 within the clas
+        console.log("\n* Turbocharger is active for " + this.color, + this.speed +"km/hr " + this.model)  
+    }
+    carTyre(){ //method2 within the class
+        console.log("\nThe car Tyre is strong for all the Models")
+    }
+}
+    //creating instances within the Car class
+    const car1 = new Car("blue", 180, "Toyota")
+    const car2 = new Car("Black", 175, "Benz")
+    const car3 = new Car ("white", 160, "Honda")
+
+car1.turbocharger();  //outputs the instance of the Car class with it's properties from method1
+car2.turbocharger();
+car3.turbocharger();
+car1.carTyre(); //outputs the instance of the Car class with it's properties from method2
+//Principles of OOp- there are four fundamental principles of OOP which includes Inheritance, encapsulation, abstraction, and Polymorphism.
+//Objects exists in hierachical structure.(ie Original base or super class for Everything is the Object Class)
+class Animal { /* ...class code here... */ }
+
+var myDog = Object.create(Animal)
+
+console.log (Animal)
+
+class Animal {
+    // Constructor to initialize properties of the Animal class
+    constructor(name, species, sound) {
+        this.name = name;
+        this.species = species;
+        this.sound = sound;
+    }
+
+    // Method to make the animal speak
+    speak() {
+        console.log(`${this.name} says ${this.sound}`);
+    }
+
+    // Method to describe the animal
+    describe() {
+        console.log(`${this.name} is a ${this.species}`);
+    }
+}
+
+// Creating an instance of Animal class using Object.create
+var myDog = Object.create(new Animal('Buddy', 'Dog', 'Woof')); //The object.create() method creates a new method using an existing object as the prototype for the newly created object
+var myCat = Object.create(new Animal('Jacquar', 'Cat', 'Mew')); // Example,, myCat inherits directly from the instance of *Animal Class, Using Instances as prototype
+
+// Accessing the methods
+myDog.speak();    // Output: Buddy says Woof
+myDog.describe(); // Output: Buddy is a Dog
+myCat.speak()
+myCat.describe()
+
+console.log(Animal); // Outputs the Animal class definition
+//Object.create: Inherits directly from an object or a prototype, without necessarily invoking a constructor. It's more flexible for some specific cases of prototypal inheritance.
+//new: Creates a new instance of a class or constructor function, invoking the constructor and setting up a prototype chain.
+//Inheritance(A base class, one or more subclasses that inherits from the properties of the base class-sometimes refers as the superclass), in some cases, other sub sub classes that inherits from the subclass
+//Note-Each sub class inherits from its super class and hence a class might be a super class if there are classes inheriting from that subclass
+//For Example Class Animal -> sub-class -> Bird -> sub sub-class -> Eagle (Bird inherits the properties of The base class animal and Eagle inherits the propertie of the subclass Bird which now serves as a superclass for it)
+//Each of the classes Animal, Bird and Eagle are seperate blue prints for specific object instances that can be constructed as needed.
+//Code Example
+// Base class
+class Animal {  //Constructor to initialize the properties of the animal class
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    eat() {   //Method describing a feature of the animal
+        console.log(`${this.name} is eating.`);
+    }
+
+    sleep() {   //second method describing another feature of the animal
+        console.log(`${this.name} is sleeping.`);
+    }
+}
+
+// Derived class (inherits from the base Class Animal using the Extend keyword)
+class Bird extends Animal {
+    constructor(name, age, canFly) {  //constructor to initialize the properties of the subclass-Bird
+        super(name, age); // Call the parent constructor (Animal using the super Keyword)
+        this.canFly = canFly;  //Declare the properties using this. keyword
+    }
+
+    fly() {    //Method describing the Fly feature of the subClass Bird
+        if (this.canFly) {  //set conditions for the fly property
+            console.log(`${this.name} is flying.`);  //ouputs conditions
+        } else {
+            console.log(`${this.name} cannot fly.`);
+        }
+    }
+}
+
+// Further derived class (inherits from Bird Also using the Extend Key word)
+class Eagle extends Bird {
+    constructor(name, age, canFly, wingspan) {  //Constructor to initialize the properties of the sub sub class Eagle
+        super(name, age, canFly); // Call the parent constructor (Bird using the Super Keyword)
+        this.wingspan = wingspan; // Declare the Additional property specific to Eagle
+    }
+
+    hunt() {  //Method to describe the hunt feature of the sub sub class Eagle
+        console.log(`${this.name} with a wingspan of ${this.wingspan} meters is hunting.`);
+    }
+}
+
+// Create an instance of Eagle
+const eagle1 = new Eagle("Bald Eagle", 5, true, 2.5);//(ie Name, age, canFly and wingspan- for all properties in the different classes)
+
+// Call methods
+eagle1.eat();  // Inherited from Animal
+eagle1.fly();  // Inherited from Bird
+eagle1.hunt(); // Method specific to Eagle
+eagle1.sleep(); //Inherited from animal
+//Encapsulation-This has to do with making a code implementation "hidden" from other users such that they don't have to know how the code work so as not to be able to consume the code.
+//Encapsulation prevents external code from being concerned with the internal workings of an object
+//Example
+var alphabet = "abc"
+var uppercase = "abc".toUpperCase();//the Method toUpperCase which converts the lower case string to upper case is encapsulated(the user is not bothered about how it works)
+console.log(uppercase)
+//Abstraction-Writing code in a more generalized way, it is about extracting the concept of what we want to do rather than dealing with a specific manifestation of that concept.
+//Polymorphism-that is...Multiple forms or taking on so many shapes, where same properties of different objects are used for different Purpose
+//For example, the bell on a door and the bell on a bicycle. Check code below
+const bicycle = {
+    bell: function() {  //bell method as a property of the bicycle object (Hence written as a function associated with the object)
+        return "Ring, ring! Watch out, please!"
+    }
+}
+
+const door = {
+    bell: function() {  //bell method as a property of the door object  hence written as a function associated with the object
+        return "Ring, ring! Come to door, please!"
+    }
+}
+//A Method is a function that is defined within an object.
+console.log(bicycle.bell())
+console.log(door.bell())
+//Adding a funciton to make the code truly polymorphic
+function ringTheBell(Any){
+    console.log(Any.bell())
+}
+ringTheBell(bicycle)
+ringTheBell(door)
+//Another example on using the concate operator used by calling the built in concat() method which behaves exaclty the same way when the + operator is used
+//Example of using the concat() method on two strings
+var concatenation ="Ernest".concat("Uchenna")
+console.log(concatenation)
+var concatenation = "Ernest" + "Uchenna"
+console.log(concatenation)   //both ouputs ErnestUchenna
+//The concat() method can also be used on two arrays Example below
+var arrayConcat = ["Ernest"].concat(["Uchenna"]) //Hence the concat() method exhibits a polymorphic behaviour as it behaved differently based on the data types(String and Array) in this context.
+console.log(arrayConcat)
+var plusOperator = [...["Ernest"], ...["Uchenna"]];  // Using spread operator
+console.log(plusOperator);
+//similarly, using the + operator
+var plusOperator = ["Ernest"] + ["Uchenna"]
+console.log(plusOperator)//outputs ErnestUchenna, because the + operator when used on arrays converts the arrays to strings and concatenates them.
+//see Example of polymorphism using Classes
+class Bird {  //Parent class Bird
+    useWings() {  //The method that represents the ability of birds to fly
+        console.log("Flying!")
+    }
+}
+class Eagle extends Bird {  //A sub class of the base/Parent class Bird
+    useWings() {   //Overridden method from base class which calls the parent class using super.wing() method and add/Prints it's own behaviour "Barely Flapping!"
+        super.useWings()
+        console.log("Barely flapping!")
+    }
+}
+class Penguin extends Bird {
+    useWings() {  //does not call the super.useWings() method, Directly prints diving which shows the Penguin use of wings to Dive instead of to fly.(Same method called and used to build different objects-ie Functions with same exact name and functionality and behaves exactly the same)
+        console.log("Diving!")
+    }
+}
+//Object Instantiations
+var strongEagle = new Bird(); //An  instance of the bird class created and assigned to the vairable strongEagle
+var baldEagle = new Eagle();
+var kingPenguin = new Penguin();
+strongEagle.useWings()// "Flying!"
+baldEagle.useWings(); // "Flying! Barely flapping!"
+kingPenguin.useWings(); // "Flying! Diving!"
+//The Penguin and Eagle sub-classes both inherit from the Bird super-class. The Eagle sub-class inherits the useWings() method from the Bird class, but extends it with an additional console log. The Penguin sub-class doesn't inherit the useWings() class - instead, it has its own implementation, although the Penguin class itself does extend the Bird class.  
+//Constructors-Built in Object types in javascript includes  Math, Date, Object, Function, Boolean, Symbol, Array, Map, Set, Promise, JSON, etc.
+//Constructor functions, commonly referred to as just "constructors", are special functions that allow us to build instances of these built-in native objects. All the constructors are capitalized.
+//An example - Create new date instance
+const date = Date()  //Declare a Date() object and assigns it to the variable date
+console.log(date)  //returns the current date and time as a string in a human-readable format, cannot be manipulated like an actual date object
+
+const newDate = new Date()  //Creates the actual date object that is just more than a string. it has a wide range of methods and properties for working with dates and times (e.g., .getDay(), .getTime(), .getYear(), .setFullYear() etc.).
+console.log(newDate) //outputs the date in ISO 8601 format ie2024-09-16T20:45:05.008Z(YYYY-MM-DD, T to seperate date from Time- HH:MM:SS.SSS(milliseconds) and Z shows the date is in UTC-Cordinated Universal Time- Zulu Time)
+
+const newDate2 = new Date();
+console.log(newDate2.getFullYear()); //outputs the current year
+
+const newDate3 = new Date();
+console.log(newDate3.getYear()); //outputs current Year minus 1900(Ie 124 which is the  number of years since 1900)
