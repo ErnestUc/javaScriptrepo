@@ -3,24 +3,35 @@
 //declare a variable
 var Ernest;
 //to assign the description fair to the name Ernest
-var Ernest = 'fair';
-//console.log (Ernest);
-console.log ("uche", Ernest);    
+var Ernest = 20;
+var Jesubon= 20.6
+var b = Jesubon + Ernest
+console.log(b)
+
+
+console.log (Ernest);
+var Ernest = "fair"
+console.log ("uche:", Ernest); 
+
+console.log("Uche:" + "Fair")
+console.log("Uche: Fair")
+console.log(3 + 4)
+
 var dogName = "Rex"
 dogName = "Bingo"
 console.log (dogName);
 var dogSound = "purr"
 console.log (dogName, "says", dogSound);
 console.log(2+6);
-console.log(10==5)
+console.log(10==10)
 console.log(10<43);
-console.log(8 != 4)
+console.log(8 != 8)
 console.log(6==6)
 console.log (10*12)
-//using the logical and(&&) operator
+//using the logical and(&&) operator !!
 //A code to check if currrent time variable is between 9am and 5pm using the logical and operator(&&). 
 //returns true only when the two conditions are true.
-var currentTime = 8
+var currentTime = 10
 console.log(currentTime>9 && currentTime<17);
 console.log(currentTime);
 // var currentTime = 7
@@ -210,7 +221,7 @@ for (var i=1; i<=2; i++){
 }
 }
 //using nested loops to display to display summer months over two years
-for (var year = 2023; year<2025; year++){
+for (var year = 2023;  year<2025; year++){
     console.log(year);
     for(var month = 6; month<9; month++){
         console.log("---------", month)
@@ -1090,3 +1101,847 @@ console.log(newDate2.getFullYear()); //outputs the current year
 
 const newDate3 = new Date();
 console.log(newDate3.getYear()); //outputs current Year minus 1900(Ie 124 which is the  number of years since 1900)
+const calculation = 4.77
+console.log(Math.round(calculation)) //note that the math built in object does not come with a constructor function hence a new Math() function cannot be run.
+console.log(Math.pow(2,5))  //Math.pow() function use to calculate the result of raising a base number to a power (ie 2^5 =32)
+//There's no need to build an instance of the Math object since there would be nothing that needs to be stored in that specific object's instance.
+//An Example of Defining custom constructor functions
+function Icecream(flavor) {
+    this.flavor = flavor;
+    this.meltIt = function() {
+        console.log(`The ${this.flavor} icecream has melted`);
+    }
+}
+Icecream()
+Icecream.function()
+//Adjusted by addding a custom constructor function
+class Icecream {
+    constructor(flavor) {
+        this.flavor = flavor;
+        this.meltIt = function () {
+            console.log(`The ${this.flavor} icecream has melted`);
+        };
+    }
+}
+//Creating Instances of the obeject function
+let kiwiIcecream1 = new Icecream("kiwi");
+let appleIcecream1 = new Icecream("apple");
+kiwiIcecream1.meltIt(); // --> Icecream {flavor: 'kiwi', meltIt: ƒ}
+appleIcecream1.meltIt(); // --> Icecream {flavor: 'apple', meltIt: ƒ}
+
+//without a constructor function
+function Icecream(flavor) {
+    this.flavor = flavor;
+    this.meltIt = function() {
+        console.log(`The ${this.flavor} icecream has melted`);
+    }
+}
+//Creating Instances of the obeject function(ie building different instances of the ice cream type)
+let kiwiIcecream = new Icecream("kiwi");
+let appleIcecream = new Icecream("apple");
+let fannyIceCream = new Icecream("Fanice");
+kiwiIcecream.meltIt(); // --> Icecream {flavor: 'kiwi', meltIt: ƒ}
+appleIcecream.meltIt(); // --> Icecream {flavor: 'apple', meltIt: ƒ}
+fannyIceCream.meltIt();  //The Fanice icecream has melted
+
+//Example of using the built-in String constructor, I can build new strings:
+let apple = new String("red");// ccreates an object of the type String instead of the string Primitive
+console.log(apple.toUpperCase()); // --> String {'apple'}  //Apple object now refers to a String object, not a string variable, hence ouput will be in the form({"apple"})
+let apple1 = "red"  //note that the apple1 variable, a string literal(primitive value) will be more performant than the apple variable which is an object because each object in javascript is Unique. and also a string object cannot be compared with another string object even if their values are identical
+console.log(apple1.toUpperCase())
+//Example, compare
+var A =new String('plum') === new String('plum')  //comparing objects(memory locaction where the objects are saved is what is compared)
+console.log(A)//False   
+
+var A = 'plum' ==='plum'  //Comparing strings, the values are being compared and hence returns true
+console.log(A) //True
+//Instead of new Object, you should stick to the object literal syntax: {}.
+//RegExp- Another built in object in Javascript used to pattern-Match strings(Using Regular Expressions), alternatively, a pattern literal can be used in place of a regular expression.(ie /d/)
+//note that Instead of using Array, Function, Object and RegExp constructors, you should use their array literal, function literal, Object literal and pattern literal varieties: [], () {}, and /()/. respectively
+//Example for Regular Expression
+let result1 = "abcd".match(/d/); //.match() method is used to search for a match against on a string(ie "abcd") a regular expression(Ie /d/ in this case)
+console.log(result1); // Outputs: ['d', index: 3, input: 'abcd', groups: undefined]
+//Examples of built in type objects used with constructors includes new Date();
+//new Error();
+try {
+    throw new Error('Something went wrong!'); //Message to display passed in
+  } catch (err) {
+    console.log(err.message); // "Something went wrong!"
+  }
+//new Map();
+const map = new Map();  //decare new map that stores key-value pairs which can be objects, functions, etc
+map.set('name', 'Ernest'); //(Key-value pair...ie Key(name), value(Ernest))
+console.log(map.get('name')); // "Ernest"
+
+//new Promise();
+const promise = new Promise((resolve, reject) => {   // Defines a constant variable named promise that will hold the Promise object.
+    //creates a promise object used to handle Asynchronous operations- A value that may be availble now, or in the future ot that may never be available
+    setTimeout(() => resolve('Success!'), 1000); //The setTimeout function is used here to simulate an asynchronous operation with a delay of 1000 milliseconds (1 second). After 1 second, the resolve function is called with the argument 'Success!', meaning the promise is "resolved" with this value.
+  });
+  promise.then(result => console.log(result)); // "Success!"
+
+//new Set();
+const set = new Set([1, 2, 2, 3,4,4,5,6,6]);  //creates a set of object which stores unique values of any type and remove duplicate values
+console.log(set); // Set { 1, 2, 3 }
+
+//new WeakSet();
+const weakSet = new WeakSet(); // Creates a WeakSet object, which stores weakly held objects. Objects in a WeakSet are only referenced weakly, meaning if no other references to an object exist, it can be garbage collected.
+let obj = { name: 'Ernest' };
+weakSet.add(obj);
+console.log(weakSet.has(obj)); // true
+obj = null; // Now `obj` can be garbage collected.
+
+//new WeakMap();
+const weakMap = new WeakMap(); //Creates a WeakMap object, which holds key-value pairs where keys must be objects and values can be of any type. The references to the keys are weak, meaning they do not prevent garbage collection of the key objects.
+let obj1 = {};
+weakMap.set(obj1, 'some value');
+console.log(weakMap.get(obj1)); // "some value"
+obj1 = null; // Now `obj` can be garbage collected.
+//Inheritance-the revolves around the prototype(An Original model from which other forms are developed)
+//The prototype is an object that can hold properties to be shared by multiple other objects
+//Example-Demonstrating inheritance and how to build a prototype
+var Bird = {
+    hasWings: true,
+    canFly: true,
+    hasFeathers: true
+}
+//Using readily avialable object *Create*- to construct new object
+var eagle2 = Object.create(Bird)  //eagle2 variable takes the  Bird Object and passes it to the Object.Create method. Using the object create to instantiate the eagle2 object, give us access to all the properties of the Bird Object
+console.log('eagle2:', eagle2)
+console.log('eagle2 has wings:', eagle2.hasWings)
+console.log(eagle2.hasWings)
+console.log('eagle2 canFly?:', eagle2.canFly)
+console.log('eagle2 hasFeathers:', eagle2.hasFeathers)
+//with the object create syntax, many object can be built which will all have the Bird objects as their protoype
+var eagle3 = Object.create(Bird)
+console.log('eagle3 canFly:', eagle3.canFly)
+//Creating a new object with its own properties and also accessing the Properties of the prototype
+var Penguin1 = Object.create(Bird)
+Penguin1.canFly= false
+console.log('Penguin1:', Penguin1) //Overrides the canFly Property on the Prototype
+console.log('Penguin1 hasFeathers:', Penguin1.hasFeathers) //Accessing the properties of the prototype
+//note that for more complex scenarios and for better perfomance, it is better to use the class syntax to build more complex objects and inheritance rather than the Object Create Syntax
+//Creating Classes-concept of extending classes using basic inheritance to alter behaviours within child classes
+//Example coding an Airplane class
+class Airplane{
+    constructor(TwoFanEngine, FlightAttendant){
+        this.TwoFanEngine = TwoFanEngine,
+        this.FlightAttendant = FlightAttendant
+    } 
+//Add methods to classes, and these methods will then be shared by all future instance objects of my Train class.
+onFanEngine() {
+    this.TwoFanEngine = !this.TwoFanEngine;
+    }
+EngineStatus() {
+    console.log('Is Engine Active?', this.TwoFanEngine);
+    }
+getSelf() {
+    console.log(this);
+    }
+getPrototype() {
+    var proto = Object.getPrototypeOf(this); //getting the prototype using the built in Object.getprototypeOf() method and passing *This* object to it
+    console.log(proto);
+    }
+}
+
+//Implementing polymorphism using using classes. example with the sub class below
+class HighSpeedPlane extends Airplane{
+    constructor(passengers, highSpeedOn, TwoFanEngine, FlightAttendant) {
+        super(TwoFanEngine, FlightAttendant); // super is used to specify what property gets inherited from the super-class in the sub-class.
+        this.passengers = passengers;
+        this.highSpeedOn = highSpeedOn;
+    } //note that in addition to the inherited properties from the base class(TwoFanEngine and FlightAttendant), all the methods that exist on the Airplane prototype are automatically inherited as well(ie onFanAEngine, EngineStatus, etc)
+    //Adding another method that will be specific to the HighSpeedPlane Class eg toggleHighSpeed()
+    toggleHighSpeed(){
+        this.highSpeedOn = !this.highSpeedOn
+        console.log("High Speed Status:", this.highSpeedOn)
+    }
+    //Adjusting the inherited method probably to best suit your objective in the sub class example-the onFanEngine() method. and engineStatus()method
+    onFanEngine() {
+        super.onFanEngine() //used to inherit the entire super class method
+        super.EngineStatus() //used to inherit the behaviour of this method because we need the updated status of the twoFanEngine property logged to the console when ever the onFanEngine() method is invoked in the subclass
+        console.log("Engine is 100% operational.")
+    }
+}
+//build new instances of the Airplane class
+var firstPlane = new Airplane(true, 5)
+console.log(firstPlane)
+var secondPlane = new Airplane(false, 'Three')
+console.log(secondPlane)
+var thirdPlane = new Airplane(true, 4);
+//Invoke the methods
+thirdPlane.onFanEngine()  //changes the value of the twoFanEngine Property to it's opposite(ie from true to false and vice versa)
+thirdPlane.EngineStatus()  //reports the current status of the Engine status
+thirdPlane.getSelf()       //Prints out the properties on the object instance it is called on
+thirdPlane.getPrototype()  //console logs the prototype of the object instance of the Airplane class-which holds all the properties shared by all the object instances of the the Airplane class. All methods of the Airplane class lives on the Prototype and not on any of the instance object of the Airplane class
+// in conclusion, the class syntax in JavaScript allows us to clearly separate individual object's data - which exists on the object instance itself - from the shared object's functionality (methods), which exist on the prototype and are shared by all object instances.
+//instantiate new objects or build new instances of the HighSpeedPlane Subclass
+var fourthPlane = new Airplane(true, 7)
+var highSpeed1 =  new HighSpeedPlane(20, true, 'yes', 6)
+//invoke the methods
+fourthPlane.onFanEngine()
+fourthPlane.EngineStatus()
+highSpeed1.onFanEngine()
+fourthPlane.getPrototype()
+highSpeed1.getPrototype()
+HighSpeedPlane.prototype()
+Airplane.prototype()
+//Using Class inheritance as another class' constructuor's property.
+class StationaryBike {
+    constructor(position, gears) { //Gym class Inherited properties
+        this.position = position
+        this.gears = gears
+    }
+}
+
+class Treadmill {
+    constructor(position, modes) {  //Gym class Inherited Properties
+        this.position = position
+        this.modes = modes
+    }
+}
+
+class Gym {
+    constructor(openHrs, stationaryBikePos, treadmillPos) {//another constructor inheriting the properties
+        this.openHrs = openHrs
+        this.stationaryBike = new StationaryBike(stationaryBikePos, 8)
+        this.treadmill = new Treadmill(treadmillPos, 5)
+    }
+}
+//Create instances of the class
+var mill1 = new Treadmill ('Middle', 10)
+var boxingGym = new Gym("7-22", "right corner", "left corner")
+
+console.log(boxingGym.openHrs) //
+console.log(boxingGym.stationaryBike) //
+console.log(boxingGym.treadmill) //
+console.log(mill1)
+//Default parameters-A useful a ES6 feature(let and const keywords) allows me to set a default parameter inside a function definition  First
+//Example
+function noDefaultParams(number) {  //No default parameter passed in
+    var number=30// define the variable that was passed in to the function
+    console.log('Result:', number * number)
+}
+//var number=30
+noDefaultParams()//NAN
+
+function withDefaultParams(number= 20) {  //default parameter passed in
+    console.log('Result:', number * number)
+}
+withDefaultParams()//400
+
+//Coding classes in a way that will promote easier object instantiation.
+class NoDefaultParams {
+    constructor(num1, num2, num3, string1, bool1) { //the boolean should be set to true for the code to work
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num3 = num3;
+        this.string1 = string1;
+        this.bool1 = bool1;
+    }
+    calculate() {
+        if(this.bool1) {
+            console.log(this.string1, this.num1 + this.num2 + this.num3);
+           return;
+        }
+        return ("The value of bool1 is incorrect")
+    }
+}
+
+var fail = new NoDefaultParams("result", 1, 2, 3, false);
+console.log(fail.calculate()); // 'The value of bool1 is incorrect'
+//Improved example
+class WithDefaultParams {
+    constructor(num1 = 1, num2 = 2, num3 = 3, string1 = "Result:", bool1 = true) {  //when the boolean is set to true in Defualt Parameter
+        this.num1 = num1;
+        this.num2 = num2;
+        this.num3 = num3;
+        this.string1 = string1;
+        this.bool1 = bool1;
+    }
+    calculate() {
+        if(this.bool1) {
+            console.log(this.string1, this.num1 + this.num2 + this.num3);
+            return;
+        }
+        return "The value of bool1 is incorrect"
+    }
+}
+var better = new WithDefaultParams();
+better.calculate(); // Result: 6
+//Designing an Object Oriented Program- Example
+class Animal {
+    constructor(color = 'yellow', energy = 100) {  //Animal class with properties- color and energy with default values - Yellow and 100 respectively
+        this.color = color;   //Assign the property to itself with this Key word
+        this.energy = energy;
+    }
+    isActive() {    //create the class method and write it's logic
+        if(this.energy > 0) {
+            this.energy -= 20;  //Decreases the Energy property by 20 units if this.energy is greater than 0
+            console.log('Energy is decreasing, currently at:', this.energy)//outputs currentl Energy level
+        } else if(this.energy == 0){  //checks if the energy level has reached zero in which case the object no longer has energy to perform actions
+            this.sleep();  //calls the sleep method when the Energy level is Zero
+        }
+    }
+    sleep() {  //Defining the sleep method deesigned to increase the energy of the object when called
+        this.energy += 20;  //Increases the energy property of the object by 20 units
+        console.log('Energy is increasing, currently at:', this.energy) //ouputs the current energy level of the object
+    }
+    getColor() { //Defines the getColor method
+        console.log(this.color)  //outputs the color property of the object to the console
+    }
+}
+
+class Cat extends Animal {//Defines a subclass of the base class Animal-ie it Inherits the methods and properties of the Animal class using the Extend Keyword 
+    constructor(sound = 'purr', canJumpHigh = true, canClimbTrees = true, color, energy) {  //constructor function having the inherited properties and also specific addtional properties of the cat class
+        super(color, energy);
+        this.sound = sound;
+        this.canClimbTrees = canClimbTrees;
+        this.canJumpHigh = canJumpHigh;
+    }
+    makeSound() {
+        console.log(this.sound);
+    }
+}
+
+class Bird extends Animal {
+    constructor(sound = 'chirp', canFly = true, color, energy) {
+        super(color, energy);
+        this.sound = sound;
+        this.canFly = canFly;
+    }
+    makeSound() {
+        console.log(this.sound);
+    }
+}
+
+class HouseCat extends Cat { //sub-sub class, parent class(Cat) here is a sub class
+    constructor(houseCatSound = "meow", sound,canJumpHigh,canClimbTrees, color,energy) {
+        super(sound,canJumpHigh,canClimbTrees, color,energy);
+        this.houseCatSound = houseCatSound;
+    }
+    makeSound(option) {
+        if (option) {
+            super.makeSound();
+        }
+        console.log(this.houseCatSound);
+    }
+}
+
+class Tiger extends Cat {
+    constructor(tigerSound = "Roar!", sound,canJumpHigh,canClimbTrees, color,energy) {
+        super(sound,canJumpHigh,canClimbTrees, color,energy);
+        this.tigerSound = tigerSound;
+    }
+    makeSound(option) {
+        if (option) {
+            super.makeSound();
+        }
+        console.log(this.tigerSound);
+    }
+}
+
+class Parrot extends Bird { //sub class parrot inheriting from a sub class Bird-making a bird a super class or parent class for Parrot, which still inherits the properties of the parent class Animal
+    constructor(canTalk = false, sound,canFly, color,energy) {
+        super(sound,canFly, color,energy);
+        this.canTalk = canTalk;
+    }
+    makeSound(option) {
+        if (option) {
+            super.makeSound();
+        }
+        if (this.canTalk) {
+            console.log("I'm a talking parrot!");
+        }
+    }
+}
+
+var fiji = new Parrot(false); // we're passing `false` to the constructor so that fiji can't talk
+var polly = new Parrot(true); // we're passing `true` to the constructor so that polly can talk
+
+fiji.makeSound(); // undefined
+fiji.makeSound(true); // chirp
+
+polly.makeSound(); // I'm a talking parrot!
+polly.makeSound(true); // chirp, I'm a talking parrot!
+
+polly.color; // yellow
+polly.energy; // 100
+
+polly.isActive(); // Energy is decreasing, currently at: 80
+
+var penguin = new Bird("shriek", false, "black and white", 200); // setting all the custom properties
+penguin; // Bird {color: 'black and white', energy: 200, sound: 'shriek', canFly: false }
+
+penguin.sound; // 'shriek'
+penguin.canFly; // false
+penguin.color; // 'black and white'
+penguin.energy; // 200
+penguin.isActive(); // Energy is decreasing, currently at: 180
+
+var leo = new HouseCat();
+
+// leo, no purring please:
+leo.makeSound(false); // meow
+// leo, both purr and meow now:
+leo.makeSound(true); // purr, meow
+
+var cuddles = new Tiger();
+cuddles.makeSound(false); // Roar!
+cuddles.makeSound(true); // purr, Roar!
+//Advanced Javascript features- Destructuring objects and arrays, Using the Destructuring syntax to extract new variables from objects and arrays
+//Destructuring something out of an object or array involves copying an item which then becomes independent of the original
+//Destructuring object and arrays, Using the Destructuring syntax to extract new variables from objects and arrays
+//Example- Destructure Pie from an Existing math object
+let {PI} = Math
+console.log(PI)  //Note that destructuring only works on something that already exists on an object, hence using faulty spelling and a lower case will return an undefined value
+//example
+let{pi} = Math
+console.log(pi)//retunrns undefined because there is not a lower case pi property on the Math Object
+//To confirm that all all Caps PI variable has the identical value and data type as Math.PI using === comparison operator
+//const X = {PI}
+let{PI} = Math //Destructures PI from the Math Object making PI to be equal to Math.PI
+console.log(PI === Math.PI) //outputs True because PI is equal to Math.PI
+//Check- A destructured property and the orignal property are in no way connected
+//Example
+let{PI} = Math //Destructures PI from the Math object
+PI==Math.PI
+PI = 1 //Assigning the Destructured property to another value
+console.log(PI) //outputs a new value for PI
+console.log(PI===Math.PI)//Outputs false because PI now has a different value from Math.PI- that is to say that the original property on the object and the destructured value are not connected in anyway.
+
+//For Of Loops and Objects- note that a loop cannot work on an object directly since an object is not iterabl. instead, it works directly on Arrays
+const car = {
+    speed: 100,
+    color: "blue"
+}
+
+for(prop of car) {
+    console.log(prop)
+}//outputs *TypeError: car is not iterable
+//When For Of Loops is used in an array.
+const colors = ['red','orange','yellow']
+for (var color of colors) {
+    console.log(color);
+}//outputs the elements in the array.
+//The for loop is a traditional loop that is used for iterating over a range of numbers or indices. It gives you control over the starting point, condition, and increment/decrement of the iteration.
+const array = [10, 20, 30];
+for (let k = 0; k < array.length; k++) {
+  console.log(array[k]); // Logs 10, 20, 30
+}
+//The for...of loop is used for directly iterating over iterable objects such as arrays, strings, maps, sets, etc. It retrieves the value of each element in the iterable without using an index.
+const array = [10, 20, 30];
+for (let value of array) {
+  console.log(value); // Logs 10, 20, 30
+}
+//note that a For Of Loop can be run on arrays to loop over objects
+//built in methods- Object.keys(), )bject.values(), Object.entries()
+const car2 = {
+    speed: 200,  //key and Properties ie speed and 200 respectively 
+    color: "red"
+}
+console.log(Object.keys(car2))// ['speed','color']
+console.log(Object.values(car2)) // ['speed','color']
+console.log(Object.entries(car2)); //[ [ 'speed', 200 ], [ 'color', 'red' ] ], here we have a 2 member array nested in an array.ie an array of an arrays where each array item has two members(A property key and a property value)
+//looping over any object's own property keys and values.
+//For Example
+var clothingItem = {
+    price: 50,
+    color: 'beige',
+    material: 'cotton',
+    season: 'autumn'
+}
+
+for( const key of Object.keys(clothingItem) ) { //loops over the object's keys
+    console.log(key, ":", clothingItem[key])  //ouputs object's property keys and property values
+}
+//code a function declaration that randomly assigns either the string speed or the string color to a variable name, and then build an object that has only two keys: a speed key and a color key. This will enable us to be be able to dynamically access either one of those properties on a brand new drone object, using the brackets notation.
+function testBracketsDynamicAccess() {
+    var dynamicKey;  //dynamicKey declared and it's assigned value depends on the result of the Math.random() which generates a random number between 0 and 1
+    if(Math.random() > 0.5) {
+      dynamicKey = "speed";
+     }else{
+       dynamicKey = "color";
+     }
+  
+      var drone = {  //Define drone object
+        speed: 15,
+        color: "orange"
+      }
+  
+      console.log(drone[dynamicKey]);  //Accessing drone object dynamically using the bracket notation and the value of the dynamicKey object
+  }
+  testBracketsDynamicAccess();  //invoke or call the function
+  //Demonstrating dynamic access with a predefined logic or a simple loop
+  function testBracketsDynamicAccess() { //delare the function
+    var keys = ["speed", "color"]; // Array of possible keys
+  
+    var drone = {  //define the drone object
+      speed: 15,
+      color: "orange"
+    };
+  
+    keys.forEach(key => {
+      console.log(`Value for key "${key}":`, drone[key]); //the for each method takes a call back function as an argument which in this case, the call back function is defined using the arrow function syntax 
+    });
+  }
+  testBracketsDynamicAccess();
+  //Difference between for of loops and for in loops when applied to objects
+  const car  ={ //const set to an object and assigned to a variable car  //Prototype of the sportsCar Object
+    engine: true,  //properties of the object, key and value
+    steering: true,
+    speed: "slow"
+  }
+  const sportsCar = Object.create(car) //new object with variable "sportsCar" which inhetits the properties of the car object
+  sportsCar.speed = "fast"
+  console.log ("The Sports Car is: ", sportsCar)
+  console.log("---------- For in is unreliable ------")  //this is because the for in loops iterates over not only the specified objects but also on the protoytpe itself, ie in this case looping over the engine and steering properties instead of only the speed property only as specified
+  for (prop in sportsCar){  //for in loops which logs the properties of the sportsCar object
+    console.log(prop)
+  }
+  console.log('?', "Iterating over object and it's prototype!")
+  console.log("----For-of is reliable----")
+  for (prop of Object.keys(sportsCar)){ //for of loop which uses the object key method on the sportsCar object meant to iterate over the specifed object only
+    console.log(prop + ":" + sportsCar[prop])
+    }
+    console.log(">", "Iteratring over Object's own properties only")
+//simplied version of the above code to show the difference between the for in loop and the for of loop
+//ie the for in loops iterates over the properties of the objects and its prototype while the for of loops iterates over the objects properties only
+const car ={
+    engine: true
+}
+const sportsCar = Object.create(car)
+sportsCar.speed = "Fast"
+console.log("The sportsCar Object: ", sportsCar)
+
+for (prop in sportsCar){
+    console.log("* ", prop)
+}
+
+for (prop of Object.keys(sportsCar)){
+    console.log("=> ", prop + ":" + sportsCar[prop])
+}
+
+//Workings of Template literals- An alternative way of working with strings ie introducing the use of back tick characters as delimiters along side the previous way of using single or double quotes as delimiters
+//with template lieterals, an expression can be embedded  in a placeHolder(represented by ${} where anything within the curly braces treated as javascript and anything inside the curly braces treated as a string)
+"Ernest"// string
+'Ernest'// string
+`Ernest`//template Literal
+console.log("Ernest")
+console.log('Ernest')
+console.log(`Ernest`)
+//Differences between a Template Literal and a regular string.
+//A Template string or literal allows for variable interpolation
+let greet = "Good morning"
+let place = "Umuala"
+console.log(place)
+console.log(`${greet} ${place} !`) //displays both variable using the template literal
+
+const name = "Ernest"; 
+const age = 30;
+console.log(`My name is ${name} and I am ${age} years old.`); //Allows the embeding of variables directly in between backticks without the need to use the + operator(concatenation) and quotes to delimit strings from variables
+//Also note that Template literals allows for multiple line strings
+let template = `Hello
+word
+Ernest`
+console.log(template)//allows multiple line strings
+//Template literals syntax allows for expression evaluation which is why it is possible to interpolate varialbles
+var calculate = `${1+1+1+1} stars!`//perfoming arithmetic operation inside a template literal expression
+console.log(calculate) //outputs 4 stars!...allowing for the evaluation of ternary expression inside a template literal.
+//More examples on creating and using template literals
+let noMultiline = "No mult-line strings in Es5"  //ie a variable string on a double or single quote should be on a single line
+console.log("Did you know? " + noMultiline)
+//However, using template literals(back tick characters)in Es6, strings can be written in multilines
+let multilines = `
+Using Es6
+back ticks,
+multi-line
+strings
+are possible`
+console.log(multilines)
+//Using Template literals to combine two lines, and interpolate strings using variable interpolation
+let firstSentence = `He said, "Don't you know? Es6 got some great features!"`
+let secondSentence = `"Wouldn't you want to learn more?", He asked.`
+console.log(`${firstSentence} .and I got curious, ${secondSentence}`)
+
+//module 3 programming assignment -Introduction to Recursion with Fibonacci Sequence Example
+function fib(n) {
+    // Step 1: Define the base case(s) here.
+    if (n === 0) return 0 //ie base case: fibonacci value is 0 Fibonacci(0)
+    if (n === 1) return 1 //ie base case: Fibonacci value is 1 Fibonacci(1)
+    // Hint: What is the value of Fibonacci(0) and Fibonacci(1)?
+    
+    // Step 2: Definee recursive case here.
+    return fib(n-1) + fib(n-2)// recursive case returning the sum of two previous Fibonacci numbers to get the new fibnonacci number(Fib(n))
+    // Hint: Return the sum of Fibonacci(n-1) and Fibonacci(n-2).
+}
+
+//Fibonacci sequence pattern 0,1,1,2,3,5,8,13,21,34,55,89,144,233,377, 610...basically adding two prvious numbers to get the new number or sequence
+console.log(fib(5))
+console.log(fib(10))
+console.log(fib(15))
+//Module 3, building funtional programming exercise
+//Learner Instructions: 
+// Task 1: Build a function-based console log message generator
+function consoleStyler(color, background, fontSize, txt) {
+    // Declare a variable for the message
+    // WRITE YOUR CODE HERE
+    var message = "%" + txt
+    
+    // Declare a variable for the style
+    // WRITE YOUR CODE HERE
+    var style = `color: ${color}`
+    
+    // Append background style to the style variable
+    // WRITE YOUR CODE HERE
+    style += `background: ${background};`;
+    
+    // Append font size style to the style variable
+    // WRITE YOUR CODE HERE
+    style += `font-size: ${fontSize};`;
+    
+    // Log the message with the applied style
+    // WRITE YOUR CODE HERE
+    console.log(message, style);
+}
+
+// Task 2: Build another console log message generator
+function celebrateStyler(reason) {
+    // Declare a fontStyle variable with default styles
+    // WRITE YOUR CODE HERE
+    var fontStyle = "color: tomato; font-size: 50px"
+    
+    // Check if the reason is "birthday"
+    // WRITE YOUR CODE HERE
+    if (reason === "birthday") {
+        console.log(`%cHappy birthday`, fontStyle)
+    }
+    
+    // If reason is "champions", log a congrats message
+    // WRITE YOUR CODE HERE
+     else if(reason === "champions") {
+        console.log(`%cCongrats on the title!`, fontStyle)
+    }
+    
+    // For any other reason, log a default message
+    // WRITE YOUR CODE HERE
+     else {
+         console.log("%cCelebrate", fontStyle)
+    }
+}
+
+// Task 3: Run both the consoleStyler and the celebrateStyler functions
+// Call the consoleStyler function with appropriate arguments
+// WRITE YOUR CODE HERE
+consoleStyler('#1d5c63', '#ede6db', '40px', 'Congrats!');
+
+// Call the celebrateStyler function with an appropriate argument
+// WRITE YOUR CODE HERE
+celebrateStyler('birthday');
+
+// Task 4: Insert a congratulatory and custom message
+function styleAndCelebrate(color, background, fontSize, txt, reason) {
+    // Call consoleStyler with the first four arguments
+    // WRITE YOUR CODE HERE
+    consoleStyler("color", "background", "fontSize", "txt")
+    
+    // Call celebrateStyler with the last argument
+    // WRITE YOUR CODE HERE
+    celebrateStyler("reason")
+
+}
+
+// Call styleAndCelebrate with appropriate arguments
+// WRITE YOUR CODE HERE
+styleAndCelebrate('ef7c8e', 'fae8e0', '30px', 'You made it!', 'champions');
+
+//corrected and updated
+
+// Task 1: Create a Styled Console Log Message Generator
+function consoleStyler(color, background, fontSize, txt) {
+    // Step 3: Define a message variable
+    var message = "%c" + txt;
+    
+    // Define the style variable
+    var style = `color: ${color};`;
+    
+    // Append background and font-size to the style variable
+    style += `background: ${background};`;
+    style += `font-size: ${fontSize};`;
+    
+    // Log the styled message to the console
+    console.log(message, style);
+}
+
+// Task 2: Create a Celebratory Message Generator
+function celebrateStyler(reason) {
+    // Declare a fontStyle variable with default styles
+    // WRITE YOUR CODE HERE
+    var fontStyle = "color: tomato; font-size: 50px"
+    
+    // Check if the reason is "birthday"
+    // WRITE YOUR CODE HERE
+    if (reason === "birthday") {
+        console.log(`%cHappy birthday`, fontStyle)
+    }
+    
+    // If reason is "champions", log a congrats message
+    // WRITE YOUR CODE HERE
+     else if(reason === "champions") {
+        console.log(`%cCongrats on the title!`, fontStyle)
+    }
+    
+    // For any other reason, log a default message
+    // WRITE YOUR CODE HERE
+     else {
+         console.log("%reason", fontStyle)
+    }
+}
+
+// Task 3: Invoke the Functions
+consoleStyler('#1d5c63', '#ede6db', '40px', 'Congrats!');
+celebrateStyler('birthday');
+
+// Task 4: Combine the Functions into a New Function
+function styleAndCelebrate(color, background, fontSize, txt, reason) {
+    // Call consoleStyler with styling arguments
+    consoleStyler(color, background, fontSize, txt);
+    
+    // Call celebrateStyler with reason argument
+    celebrateStyler(reason);
+}
+
+// Invoke the combined function
+styleAndCelebrate('#ef7c8e', '#fae8e0', '30px', 'You made it!', 'champions');
+
+//Module 3 Lab Project - Refactoring var to let and const: Fixing Common JavaScript Errors
+//The Lab focuses on converting  code snippet written in var to let and const and understanding the differences between these declarations
+//const is used for variables that should not change, while let is used for variables that can be reassigned
+// var vs let vs const:var is function-scoped and allows redeclaration, leading to potential bugs.  let is block-scoped and cannot be redeclared(but can be reassigned).  const is block-scoped and used for values that should not change.
+// It si advisable to use let and const in modern Javascript code, avoid using var
+
+var x = 5; // Variable declaration and initialization
+var x = 10; // Redeclaration, works with var but not allowed with let
+console.log(x)
+
+// const x = 25
+// console.log(x)
+
+var a = 20;
+console.log(a); // Hoisting example: variable is used before declaration
+
+
+if (true) {
+    var z = 30; // Variable declared with var is accessible outside block
+}
+console.log(z); // Should cause a scoping issue when switched to let/const
+
+if (true) {
+    let z = 30  //blocked scoped variable
+    console.log(z)
+}
+
+
+let b = 40; // Variable that changes value
+b = 50; // Should be let, as it changes value
+console.log(b)
+
+const PI = 3.14; // Declared as a variable but should ideally be a constant
+console.log(PI)
+//PI = 3.14159; // This should throw an error when changed to const
+
+//Programming Assignment: Building an object-oriented program.
+// Task 1: Code a Person class
+// WRITE YOUR CODE HERE - Define the Person class
+class Person {
+    // WRITE YOUR CODE HERE - Add a constructor with default parameters
+    constructor(name = "Ernest", age = 31, energy = 90) {
+        this.name = name,
+        this.age = age,
+        this.energy = energy
+    }
+    // WRITE YOUR CODE HERE - Add the sleep() method
+    sleep() {
+        this.energy += 10
+    }
+    // WRITE YOUR CODE HERE - Add the doSomethingFun() method
+    doSomethingFun() {
+        this.energy -= 10
+    }  
+}
+// Task 2: Code a Worker class
+// WRITE YOUR CODE HERE - Define the Worker class that extends Person
+class Worker extends Person {
+    // WRITE YOUR CODE HERE - Add a constructor with additional parameters
+    constructor( name, age, energy, xp = 0, hourlyWage = 10,) {
+        super(name, age, energy)
+        this.xp = xp
+        this.hourlyWage = hourlyWage
+    }
+    // WRITE YOUR CODE HERE - Add the goToWork() method
+    goToWork() {
+        this.xp += 10
+    }
+}
+
+// Task 3: Code an intern object, run methods
+function intern() {
+    // WRITE YOUR CODE HERE - Instantiate the Worker class with the intern properties
+    let intern = new Worker("Bob", 21, 110, 0, 10)
+    
+    // WRITE YOUR CODE HERE - Call the goToWork() method
+       intern.goToWork()
+    // WRITE YOUR CODE HERE - Return the intern object
+    return intern
+}
+
+// Task 4: Code a manager object, methods
+function manager() {
+    // WRITE YOUR CODE HERE - Instantiate the Worker class with the manager properties
+    let manager = new Worker("Alice", 30, 120, 100, 30)
+    // WRITE YOUR CODE HERE - Call the doSomethingFun() method
+    manager.doSomethingFun()
+    // WRITE YOUR CODE HERE - Return the manager object
+    return manager
+}
+
+console.log(intern())
+console.log(manager())
+//Programming Assignment: Array and Object Iteration
+// Task 1
+//create an array named dairy
+var dairy = ["cheese", "sour cream", "milk", "yogurt", "ice cream", "milkshake"]
+// WRITE YOUR CODE HERE - Create the logDairy function and use a for...of loop to log each item in the dairy array
+function logDairy() {
+    for (const allitems of dairy) {
+        console.log(allitems)
+    }
+}
+logDairy()
+
+
+// Task 2
+//iterating through an object's own properties 
+//Object definitions
+const animal = {
+    canJump: true
+}
+const bird = Object.create(animal)
+bird.canFly = true
+bird.hasFeathers = true
+// WRITE YOUR CODE HERE - Create the birdCan function and use a for...of loop to log bird object's own properties
+function birdCan() {
+    for (const key of Object.keys(bird)) //For of Loop using Object.keys() methods restricts iteration to object's own properties
+    console.log(`${key}: ${bird[key]}`)    
+}
+birdCan()
+
+// Task 3
+// WRITE YOUR CODE HERE - Create the animalCan function and use a for...in loop to log all bird properties, including inherited ones
+function animalCan() {
+    for (const key in bird)  //For in loop iterates through both object's own properties and those inherited from it's prototype
+    console.log(`${key}: ${bird[key]}`)
+}
+animalCan()
+
+//Data Structures
